@@ -6,7 +6,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="https://www.litianzeng.cn/"/>
-  <updated>2018-10-09T15:37:19.623Z</updated>
+  <updated>2018-10-16T17:19:47.907Z</updated>
   <id>https://www.litianzeng.cn/</id>
   
   <author>
@@ -15,6 +15,30 @@
   </author>
   
   <generator uri="http://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>markdown语法</title>
+    <link href="https://www.litianzeng.cn/2018/10/17/markdown%E8%AF%AD%E6%B3%95/"/>
+    <id>https://www.litianzeng.cn/2018/10/17/markdown语法/</id>
+    <published>2018-10-16T17:18:38.000Z</published>
+    <updated>2018-10-16T17:19:47.907Z</updated>
+    
+    <content type="html"><![CDATA[<blockquote><p>vscode 支持一边编辑一边预览，有2种方法：</p><ol><li>CTRL + shift + P 调出命令框，输入&gt;markdown 找到<strong>markdown：open 》preview</strong>的选项选中</li><li>先按ctrl + k ,然后放掉，接着按 V ，调出实时预览框</li></ol></blockquote><h1 id="markdown-语法"><a href="#markdown-语法" class="headerlink" title="markdown 语法"></a>markdown 语法</h1><h3 id="1-标题"><a href="#1-标题" class="headerlink" title="1. 标题"></a>1. 标题</h3><p>行首加上#号+空格 即可定义标题，#号的个数代表标题的级数，一共6级。</p><h3 id="2-列表"><a href="#2-列表" class="headerlink" title="2. 列表"></a>2. 列表</h3><ul><li><h3 id="无序列表"><a href="#无序列表" class="headerlink" title="无序列表"></a>无序列表</h3><ul><li>可用星号（*），加号（+），减号（—）作为标记，后面跟空格。3者可混用。</li></ul></li></ul><ul><li><h3 id="有序列表"><a href="#有序列表" class="headerlink" title="有序列表"></a>有序列表</h3><ul><li><p>数字加上句号（1. ），数字不影响显示效果</p><blockquote><ol><li>11</li><li>222</li><li>22222</li></ol></blockquote></li></ul></li><li><h3 id="列表的缩进和混排"><a href="#列表的缩进和混排" class="headerlink" title="列表的缩进和混排"></a>列表的缩进和混排</h3><ul><li>若需缩进，在*，+，—前面加 空格</li></ul></li><li><h3 id="记事列表"><a href="#记事列表" class="headerlink" title="记事列表"></a>记事列表</h3><ul><li>使用 - [x] 开头的表示已完成的记事</li><li>使用 - [ ] 开头的表示待办记事<ul><li style="list-style: none"><input type="checkbox" checked> 完成记事</li><li style="list-style: none"><input type="checkbox"> 待办记事</li></ul></li></ul></li></ul><h3 id="3-嵌套块的引用"><a href="#3-嵌套块的引用" class="headerlink" title="3. 嵌套块的引用"></a>3. 嵌套块的引用</h3><pre><code>&gt; 使用“&gt;”可以表示嵌套的引用</code></pre><h3 id="4-文字效果和分割线"><a href="#4-文字效果和分割线" class="headerlink" title="4. 文字效果和分割线"></a>4. 文字效果和分割线</h3><p><em>斜体</em><br><strong>粗体</strong><br>++下划线++<br><del>删除线</del><br>==文本高亮==</p><hr><hr><blockquote><blockquote><p>一行中用三个以上的星号 (*)、减号 (-) 或是下划线 (_) 来建立一个分隔线，需要独占一行，中间可以有空格，但行内不能包含其他字符</p></blockquote></blockquote><h3 id="5-链接"><a href="#5-链接" class="headerlink" title="5. 链接"></a>5. 链接</h3><ul><li><p>文本连接<br>格式：[文本] (链接地址 “可选说明文字，鼠标放上提示的文字”)</p><blockquote><p><a href="www.baidu.com" title="搜索">baidu</a></p></blockquote></li><li><p>图片链接<br>格式：！[文本] (链接地址 “可选说明文字，鼠标放上提示的文字”)</p></li></ul><h3 id="6-文字高亮和代码块"><a href="#6-文字高亮和代码块" class="headerlink" title="6. 文字高亮和代码块"></a>6. 文字高亮和代码块</h3><ul><li>需要高亮的文本，使用 <code>号包括，例如</code>高亮`</li><li>引用代码块使用两组 <figure class="highlight plain"><figcaption><span>包围这段代码</span></figcaption><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">```</span><br><span class="line">hello world!!</span><br></pre></td></tr></table></figure></li></ul><p>参考：<br><a href="https://www.jianshu.com/p/db1d26af109d" target="_blank" rel="noopener">https://www.jianshu.com/p/db1d26af109d</a></p>]]></content>
+    
+    <summary type="html">
+    
+      
+      
+        &lt;blockquote&gt;
+&lt;p&gt;vscode 支持一边编辑一边预览，有2种方法：&lt;/p&gt;
+&lt;ol&gt;
+&lt;li&gt;CTRL + shift + P 调出命令框，输入&amp;gt;markdown 找到&lt;strong&gt;markdown：open 》preview&lt;/strong&gt;的选项选中&lt;/
+      
+    
+    </summary>
+    
+    
+  </entry>
   
   <entry>
     <title>Hello World</title>

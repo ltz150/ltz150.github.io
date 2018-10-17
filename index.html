@@ -526,12 +526,11 @@
 <p>cd themes/next<br>git pull</p>
 </blockquote>
 <h1 id="3-next主题的预览"><a href="#3-next主题的预览" class="headerlink" title="3. next主题的预览"></a>3. next主题的预览</h1><p>💟 Muse 主题: LEAFERx | Alex LEE | Miaia<br>🔯 Mist 主题: Jeff | uchuhimo | xirong<br>♓️ Pisces 主题: Vi | Acris | Jiaxi He<br>♊️ Gemini 主题: Ivan.Nginx | Raincal | Dandy</p>
-<p>#4. 修改next主题<br>通过修改<code>主题配置文件</code>更改主题</p>
+<h1 id="4-修改next主题"><a href="#4-修改next主题" class="headerlink" title="4. 修改next主题"></a>4. 修改next主题</h1><p>通过修改<code>主题配置文件</code>更改主题</p>
 <blockquote>
 <p>Muse - 默认 Scheme，这是 NexT 最初的版本，黑白主调，大量留白<br>Mist - Muse 的紧凑版本，整洁有序的单栏外观<br>Pisces - 双栏 Scheme，小家碧玉似的清新<br>Gemini - 左侧网站信息及目录，块+片段结构布局 </p>
 </blockquote>
-<p>#5. 创建主页</p>
-<blockquote>
+<h1 id="5-创建主页"><a href="#5-创建主页" class="headerlink" title="5. 创建主页"></a>5. 创建主页</h1><blockquote>
 <p>hexo new page ‘about’</p>
 </blockquote>
 <p>在你的网站根目录下面的source文件夹会生成about文件夹</p>
@@ -552,9 +551,9 @@
 </blockquote>
 <h1 id="7-动态背景"><a href="#7-动态背景" class="headerlink" title="7. 动态背景"></a>7. 动态背景</h1>目前NexT主题最新的是V6.0版本，这个版本中可以有4种动态背景：<br>Canvas-nest<br>three_waves<br>canvas_lines<br>canvas_sphere<br>设置方法也很简单，直接设置里需要的动态背景为true。</li>
 </ul>
-<p>#8. 修改文章底部的那个带#号的标签<br>具体实现方法</p>
+<h1 id="8-修改文章底部的那个带-号的标签"><a href="#8-修改文章底部的那个带-号的标签" class="headerlink" title="8. 修改文章底部的那个带#号的标签"></a>8. 修改文章底部的那个带#号的标签</h1><p>具体实现方法</p>
 <p>修改模板/themes/next/layout/_macro/post.swig，搜索 rel=”tag”&gt;#，将 # 换成<i class="fa fa-tag"></i></p>
-<p>#9. DaoVoice 在线联系<br>具体实现方法</p>
+<h1 id="9-DaoVoice-在线联系"><a href="#9-DaoVoice-在线联系" class="headerlink" title="9. DaoVoice 在线联系"></a>9. DaoVoice 在线联系</h1><p>具体实现方法</p>
 <p>首先在 daovoice 注册账号,注册完成后会得到一个 app_id :<br>记下这个 app_id的值，然后打开/themes/next/layout/_partials/head.swig,写下如下代码：</p>
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">&#123;% if theme.daovoice %&#125;</span><br><span class="line">  &lt;script&gt;</span><br><span class="line">  (function(i,s,o,g,r,a,m)&#123;i[&quot;DaoVoiceObject&quot;]=r;i[r]=i[r]||function()&#123;(i[r].q=i[r].q||[]).push(arguments)&#125;,i[r].l=1*new Date();a=s.createElement(o),m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;a.charset=&quot;utf-8&quot;;m.parentNode.insertBefore(a,m)&#125;)(window,document,&quot;script&quot;,(&apos;https:&apos; == document.location.protocol ? &apos;https:&apos; : &apos;http:&apos;) + &quot;//widget.daovoice.io/widget/0f81ff2f.js&quot;,&quot;daovoice&quot;)</span><br><span class="line">  daovoice(&apos;init&apos;, &#123;</span><br><span class="line">      app_id: &quot;&#123;&#123;theme.daovoice_app_id&#125;&#125;&quot;</span><br><span class="line">    &#125;);</span><br><span class="line">  daovoice(&apos;update&apos;);</span><br><span class="line">  &lt;/script&gt;</span><br><span class="line">&#123;% endif %&#125;</span><br></pre></td></tr></table></figure>
 <p>写在这段代码的后面：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">&#123;% if theme.google_site_verification %&#125;</span><br><span class="line">  &lt;meta name=&quot;google-site-verification&quot; content=&quot;&#123;&#123; theme.google_site_verification &#125;&#125;&quot; /&gt;</span><br><span class="line">&#123;% endif %&#125;</span><br></pre></td></tr></table></figure></p>

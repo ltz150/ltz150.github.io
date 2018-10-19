@@ -6,7 +6,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="https://www.litianzeng.cn/"/>
-  <updated>2018-10-18T08:43:55.774Z</updated>
+  <updated>2018-10-19T08:57:29.890Z</updated>
   <id>https://www.litianzeng.cn/</id>
   
   <author>
@@ -15,6 +15,31 @@
   </author>
   
   <generator uri="http://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>windows服务器关闭23，135，335端口</title>
+    <link href="https://www.litianzeng.cn/2018/10/19/windows%E6%9C%8D%E5%8A%A1%E5%99%A8%E5%85%B3%E9%97%AD23%EF%BC%8C135%EF%BC%8C335%E7%AB%AF%E5%8F%A3/"/>
+    <id>https://www.litianzeng.cn/2018/10/19/windows服务器关闭23，135，335端口/</id>
+    <published>2018-10-19T06:02:07.000Z</published>
+    <updated>2018-10-19T08:57:29.890Z</updated>
+    
+    <content type="html"><![CDATA[<h1 id="23端口"><a href="#23端口" class="headerlink" title="23端口"></a>23端口</h1><p><strong>端口说明</strong>：23端口主要用于Telnet(远程登录)服务，是Internet上普遍采用的登录和仿真程序。同样需要设置客户端和服务器端，开启Telnet服务的客户端就可以登录远程Telnet服务器，采用授权用户名和密码登录。登录之后，允许用户使用命令提示符窗口进行相应的操作。在Windows中可以在命令提示符窗口中，键入“Telnet”命令来使用Telnet远程登录。</p><p><strong>操作建议</strong>：利用Telnet服务，黑客可以搜索远程登录Unix的服务，扫描操作系统的类型。而且在Windows 2000中Telnet服务存在多个严重的漏洞，比如提升权限、拒绝服务等，可以让远程服务器崩溃。Telnet服务的23端口也是TTS(Tiny Telnet Server)木马的缺省端口。所以，建议关闭23端口。</p><h1 id="135端口"><a href="#135端口" class="headerlink" title="135端口"></a>135端口</h1><p><strong>端口说明</strong>：135端口主要用于使用RPC(Remote Procedure Call，远程过程调用)协议并提供DCOM(分布式组件对象模型)服务，通过RPC可以保证在一台计算机上运行的程序可以顺利地执行远程计算机上的代码;使用DCOM可以通过网络直接进行通信，能够跨包括HTTP协议在内的多种网络传输。</p><p><strong>端口漏洞</strong>：相信去年很多Windows 2000和Windows XP用户都中了“冲击波”病毒，该病毒就是利用RPC漏洞来攻击计算机的。RPC本身在处理通过TCP/IP的消息交换部分有一个漏洞，该漏洞是由于错误地处理格式不正确的消息造成的。该漏洞会影响到RPC与DCOM之间的一个接口，该接口侦听的端口就是135。</p><p><strong>操作建议</strong>：为了避免“冲击波”病毒的攻击，建议关闭该端口。</p><h1 id="445端口"><a href="#445端口" class="headerlink" title="445端口"></a>445端口</h1><p><strong>端口说明</strong>445端口是一个毁誉参半的端口，有了它我们可以在局域网中轻松访问各种共享文件夹或共享打印机，但也正是因为有了它，黑客们才有了可乘之机，他们能通过该端口偷偷共享你的硬盘，甚至会在悄无声息中将你的硬盘格式化掉!</p><h1 id="批处理脚本"><a href="#批处理脚本" class="headerlink" title="批处理脚本"></a>批处理脚本</h1><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br></pre></td><td class="code"><pre><span class="line">@echo off </span><br><span class="line">color E2</span><br><span class="line">title 关闭常见的危险端口</span><br><span class="line">echo 正在开启Windows防火墙</span><br><span class="line">echo.</span><br><span class="line">netsh advfirewall set currentprofile state on &gt; nul</span><br><span class="line">netsh advfirewall set publicprofile state on &gt; nul</span><br><span class="line">netsh advfirewall set allprofile state on &gt; nul</span><br><span class="line">netsh advfirewall set privateprofile state on &gt; nul</span><br><span class="line">echo. </span><br><span class="line">echo 防火墙已经成功启动。</span><br><span class="line">echo. </span><br><span class="line">echo. </span><br><span class="line">pause </span><br><span class="line">cls </span><br><span class="line">echo 正在关闭常见的危险端口，请稍候… </span><br><span class="line">echo. </span><br><span class="line">echo 正在关闭135,445端口… </span><br><span class="line">netsh advfirewall firewall add rule name=denyDangerTCPPort dir=in protocol=TCP localport=135,445 action=block</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">echo 常见的危险端口已经关闭。 </span><br><span class="line">echo. </span><br><span class="line">echo. </span><br><span class="line">echo. </span><br><span class="line">echo. </span><br><span class="line">echo.</span><br><span class="line">echo. </span><br><span class="line">echo 按任意键退出。 </span><br><span class="line">pause&gt;nul</span><br></pre></td></tr></table></figure><p>参考：<br><a href="https://www.cnblogs.com/mobilecard/p/9286364.html" target="_blank" rel="noopener">bat批处理和netsh</a><br><a href="https://mp.weixin.qq.com/s?src=11&amp;timestamp=1539935379&amp;ver=1191&amp;signature=Dpp63toSAFvDP*sYB1QIs4GG1rxORLS*g2jjyc*PbW9QYyojhcOk1MEa7wqYIkuQtV6k*OmeDLxASga1PZ6A8FfQ6VMztfP5w-bUrxhD6cOlmILaHFfW4MUm-eWN3v-y&amp;new=1" target="_blank" rel="noopener">dos语法</a></p>]]></content>
+    
+    <summary type="html">
+    
+      
+      
+        &lt;h1 id=&quot;23端口&quot;&gt;&lt;a href=&quot;#23端口&quot; class=&quot;headerlink&quot; title=&quot;23端口&quot;&gt;&lt;/a&gt;23端口&lt;/h1&gt;&lt;p&gt;&lt;strong&gt;端口说明&lt;/strong&gt;：23端口主要用于Telnet(远程登录)服务，是Internet上普遍采用的登录
+      
+    
+    </summary>
+    
+      <category term="windows" scheme="https://www.litianzeng.cn/categories/windows/"/>
+    
+    
+      <category term="windows" scheme="https://www.litianzeng.cn/tags/windows/"/>
+    
+  </entry>
   
   <entry>
     <title>ansible-tower</title>
@@ -68,7 +93,7 @@
     <link href="https://www.litianzeng.cn/2018/10/17/next%E6%8A%80%E5%B7%A7/"/>
     <id>https://www.litianzeng.cn/2018/10/17/next技巧/</id>
     <published>2018-10-17T14:01:39.000Z</published>
-    <updated>2018-10-18T07:09:01.833Z</updated>
+    <updated>2018-10-19T06:02:58.344Z</updated>
     
     <content type="html"><![CDATA[<h1 id="1-next主题的安装"><a href="#1-next主题的安装" class="headerlink" title="1. next主题的安装"></a>1. next主题的安装</h1><p>最简单的安装方式就是直接克隆整个仓库</p><blockquote><p>cd hexo<br>git clonegit clone <a href="https://github.com/theme-next/hexo-theme-next" target="_blank" rel="noopener">https://github.com/theme-next/hexo-theme-next</a> themes/next</p></blockquote><h1 id="2-next主题的更新"><a href="#2-next主题的更新" class="headerlink" title="2. next主题的更新"></a>2. next主题的更新</h1><p>你可以通过如下命令更新到最新的master分支</p><blockquote><p>cd themes/next<br>git pull<br><a id="more"></a></p></blockquote><h1 id="3-next主题的预览"><a href="#3-next主题的预览" class="headerlink" title="3. next主题的预览"></a>3. next主题的预览</h1><p>💟 Muse 主题: LEAFERx | Alex LEE | Miaia<br>🔯 Mist 主题: Jeff | uchuhimo | xirong<br>♓️ Pisces 主题: Vi | Acris | Jiaxi He<br>♊️ Gemini 主题: Ivan.Nginx | Raincal | Dandy</p><h1 id="4-修改next主题"><a href="#4-修改next主题" class="headerlink" title="4. 修改next主题"></a>4. 修改next主题</h1><p>通过修改<code>主题配置文件</code>更改主题</p><blockquote><p>Muse - 默认 Scheme，这是 NexT 最初的版本，黑白主调，大量留白<br>Mist - Muse 的紧凑版本，整洁有序的单栏外观<br>Pisces - 双栏 Scheme，小家碧玉似的清新<br>Gemini - 左侧网站信息及目录，块+片段结构布局 </p></blockquote><h1 id="5-创建主页"><a href="#5-创建主页" class="headerlink" title="5. 创建主页"></a>5. 创建主页</h1><blockquote><p>hexo new page ‘about’</p></blockquote><p>在你的网站根目录下面的source文件夹会生成about文件夹</p><h1 id="6-hexo博客添加搜索功能"><a href="#6-hexo博客添加搜索功能" class="headerlink" title="6. hexo博客添加搜索功能"></a>6. hexo博客添加搜索功能</h1><p>标签和分类已经不能提供太大的作用，无法准确的定位到自己想要看的博客上去，所以添加一个本站内搜索功能是很有必要的</p><ul><li><p>安装插件</p><blockquote><p>npm install hexo-generator-searchdb –save</p></blockquote></li><li><p>修改站点配置文件</p><blockquote><p>search:<br>  path: search.xml<br>  field: post<br>  format: html<br>  limit: 10000</p></blockquote></li><li>修改主题配置文件<blockquote><p>local_search:<br>  enable: true</p></blockquote><h1 id="7-动态背景"><a href="#7-动态背景" class="headerlink" title="7. 动态背景"></a>7. 动态背景</h1>目前NexT主题最新的是V6.0版本，这个版本中可以有4种动态背景：<br>Canvas-nest<br>three_waves<br>canvas_lines<br>canvas_sphere<br>设置方法也很简单，直接设置里需要的动态背景为true。</li></ul><h1 id="8-修改文章底部的那个带-号的标签"><a href="#8-修改文章底部的那个带-号的标签" class="headerlink" title="8. 修改文章底部的那个带#号的标签"></a>8. 修改文章底部的那个带#号的标签</h1><p>具体实现方法</p><p>修改模板/themes/next/layout/_macro/post.swig，搜索 rel=”tag”&gt;#，将 # 换成<i class="fa fa-tag"></i></p><h1 id="9-DaoVoice-在线联系"><a href="#9-DaoVoice-在线联系" class="headerlink" title="9. DaoVoice 在线联系"></a>9. DaoVoice 在线联系</h1><p>具体实现方法</p><p>首先在 daovoice 注册账号,注册完成后会得到一个 app_id :<br>记下这个 app_id的值，然后打开/themes/next/layout/_partials/head.swig,写下如下代码：</p><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">&#123;% if theme.daovoice %&#125;</span><br><span class="line">  &lt;script&gt;</span><br><span class="line">  (function(i,s,o,g,r,a,m)&#123;i[&quot;DaoVoiceObject&quot;]=r;i[r]=i[r]||function()&#123;(i[r].q=i[r].q||[]).push(arguments)&#125;,i[r].l=1*new Date();a=s.createElement(o),m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;a.charset=&quot;utf-8&quot;;m.parentNode.insertBefore(a,m)&#125;)(window,document,&quot;script&quot;,(&apos;https:&apos; == document.location.protocol ? &apos;https:&apos; : &apos;http:&apos;) + &quot;//widget.daovoice.io/widget/0f81ff2f.js&quot;,&quot;daovoice&quot;)</span><br><span class="line">  daovoice(&apos;init&apos;, &#123;</span><br><span class="line">      app_id: &quot;&#123;&#123;theme.daovoice_app_id&#125;&#125;&quot;</span><br><span class="line">    &#125;);</span><br><span class="line">  daovoice(&apos;update&apos;);</span><br><span class="line">  &lt;/script&gt;</span><br><span class="line">&#123;% endif %&#125;</span><br></pre></td></tr></table></figure><p>写在这段代码的后面：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">&#123;% if theme.google_site_verification %&#125;</span><br><span class="line">  &lt;meta name=&quot;google-site-verification&quot; content=&quot;&#123;&#123; theme.google_site_verification &#125;&#125;&quot; /&gt;</span><br><span class="line">&#123;% endif %&#125;</span><br></pre></td></tr></table></figure></p><p>接着打开主题配置文件，在最后写下如下代码：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"># Online contact </span><br><span class="line">daovoice: true</span><br><span class="line">daovoice_app_id: 这里填你的刚才获得的 app_id</span><br></pre></td></tr></table></figure></p><p>重新 hexo g ，hexo s 就能看到效果了。</p><p>安装成功后可以在DaoVoice 控制台上的聊天设置里设置聊天窗口样式，附上我的设置</p><h1 id="10-添加阅读全文按钮"><a href="#10-添加阅读全文按钮" class="headerlink" title="10. 添加阅读全文按钮"></a>10. 添加阅读全文按钮</h1><p>如果你想让你的文章只显示一部分，多余的可以点击阅读全文来查看，那么你需要在你的文章中添加<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">&lt;!--more--&gt;</span><br></pre></td></tr></table></figure></p><p>其后面的部分就不会显示了，只能点击阅读全文才能看</p><h1 id="11"><a href="#11" class="headerlink" title="11."></a>11.</h1><p>参考：</p><ol><li><a href="https://github.com/theme-next/hexo-theme-next/tree/master/docs/zh-CN" target="_blank" rel="noopener">next主题官方文档</a></li><li><a href="http://theme-next.iissnan.com/" target="_blank" rel="noopener">next中文帮助文档</a></li><li><a href="http://shenzekun.cn/hexo%E7%9A%84next%E4%B8%BB%E9%A2%98%E4%B8%AA%E6%80%A7%E5%8C%96%E9%85%8D%E7%BD%AE%E6%95%99%E7%A8%8B.html" target="_blank" rel="noopener">next主题个性化配置教程</a></li></ol>]]></content>
     
@@ -87,7 +112,9 @@
       <category term="技巧" scheme="https://www.litianzeng.cn/categories/%E6%8A%80%E5%B7%A7/"/>
     
     
-      <category term="next，hexo" scheme="https://www.litianzeng.cn/tags/next%EF%BC%8Chexo/"/>
+      <category term="next" scheme="https://www.litianzeng.cn/tags/next/"/>
+    
+      <category term="hexo" scheme="https://www.litianzeng.cn/tags/hexo/"/>
     
   </entry>
   

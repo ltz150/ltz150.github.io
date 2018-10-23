@@ -407,7 +407,9 @@
 <p><strong>操作建议</strong>：为了避免“冲击波”病毒的攻击，建议关闭该端口。</p>
 <h1 id="445端口"><a href="#445端口" class="headerlink" title="445端口"></a>445端口</h1><p><strong>端口说明</strong>445端口是一个毁誉参半的端口，有了它我们可以在局域网中轻松访问各种共享文件夹或共享打印机，但也正是因为有了它，黑客们才有了可乘之机，他们能通过该端口偷偷共享你的硬盘，甚至会在悄无声息中将你的硬盘格式化掉!</p>
 <h1 id="批处理脚本"><a href="#批处理脚本" class="headerlink" title="批处理脚本"></a>批处理脚本</h1><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br></pre></td><td class="code"><pre><span class="line">@echo off </span><br><span class="line">color E2</span><br><span class="line">title 关闭常见的危险端口</span><br><span class="line">echo 正在开启Windows防火墙</span><br><span class="line">echo.</span><br><span class="line">netsh advfirewall set currentprofile state on &gt; nul</span><br><span class="line">netsh advfirewall set publicprofile state on &gt; nul</span><br><span class="line">netsh advfirewall set allprofile state on &gt; nul</span><br><span class="line">netsh advfirewall set privateprofile state on &gt; nul</span><br><span class="line">echo. </span><br><span class="line">echo 防火墙已经成功启动。</span><br><span class="line">echo. </span><br><span class="line">echo. </span><br><span class="line">pause </span><br><span class="line">cls </span><br><span class="line">echo 正在关闭常见的危险端口，请稍候… </span><br><span class="line">echo. </span><br><span class="line">echo 正在关闭135,445端口… </span><br><span class="line">netsh advfirewall firewall add rule name=denyDangerTCPPort dir=in protocol=TCP localport=135,445 action=block</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">echo 常见的危险端口已经关闭。 </span><br><span class="line">echo. </span><br><span class="line">echo. </span><br><span class="line">echo. </span><br><span class="line">echo. </span><br><span class="line">echo.</span><br><span class="line">echo. </span><br><span class="line">echo 按任意键退出。 </span><br><span class="line">pause&gt;nul</span><br></pre></td></tr></table></figure>
-<p>参考：<br><a href="https://www.cnblogs.com/mobilecard/p/9286364.html" target="_blank" rel="noopener">bat批处理和netsh</a><br><a href="https://mp.weixin.qq.com/s?src=11&amp;timestamp=1539935379&amp;ver=1191&amp;signature=Dpp63toSAFvDP*sYB1QIs4GG1rxORLS*g2jjyc*PbW9QYyojhcOk1MEa7wqYIkuQtV6k*OmeDLxASga1PZ6A8FfQ6VMztfP5w-bUrxhD6cOlmILaHFfW4MUm-eWN3v-y&amp;new=1" target="_blank" rel="noopener">dos语法</a></p>
+<p>显示名字为“denyDangerTCPPort”的动态入站规则<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">netsh advfirewall firewall show rule name=&quot;denyDangerTCPPort&quot;</span><br></pre></td></tr></table></figure></p>
+<p>删除名字为“denyDangerTCPPort”的动态入站规则<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">netsh advfirewall firewall delete rule name=&quot;denyDangerTCPPort&quot;</span><br><span class="line">`</span><br></pre></td></tr></table></figure></p>
+<p>参考：<br><a href="https://www.cnblogs.com/mobilecard/p/9286364.html" target="_blank" rel="noopener">bat批处理和netsh</a><br><a href="https://mp.weixin.qq.com/s?src=11&amp;timestamp=1539935379&amp;ver=1191&amp;signature=Dpp63toSAFvDP*sYB1QIs4GG1rxORLS*g2jjyc*PbW9QYyojhcOk1MEa7wqYIkuQtV6k*OmeDLxASga1PZ6A8FfQ6VMztfP5w-bUrxhD6cOlmILaHFfW4MUm-eWN3v-y&amp;new=1" target="_blank" rel="noopener">dos语法</a><br><a href="https://www.jb51.net/article/8844.htm" target="_blank" rel="noopener">DOS命令全集</a></p>
 
       
     </div>
@@ -447,6 +449,10 @@
           <span class="post-nav-divider"></span>
 
           <div class="post-nav-prev post-nav-item">
+            
+              <a href="/2018/10/23/Hexo七牛云图床使用/" rel="prev" title="Hexo七牛云图床使用">
+                Hexo七牛云图床使用 <i class="fa fa-chevron-right"></i>
+              </a>
             
           </div>
         </div>
@@ -523,7 +529,7 @@
               
                 <a href="/archives/">
               
-                  <span class="site-state-item-count">6</span>
+                  <span class="site-state-item-count">7</span>
                   <span class="site-state-item-name">日志</span>
                 </a>
               </div>

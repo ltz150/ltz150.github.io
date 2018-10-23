@@ -402,38 +402,16 @@
       
         
           
-            <h1 id="为什么要使用图床？"><a href="#为什么要使用图床？" class="headerlink" title="为什么要使用图床？"></a>为什么要使用图床？</h1><p>Hexo文章中的图片，我们可以放到本地，然后一起部署到github中，这样完全没有问题。然而github pages空间毕竟有限（貌似只有300M）,另外图片的管理太混乱了，一些原创的图片可能被盗链</p>
-<h1 id="注册和安装七牛云"><a href="#注册和安装七牛云" class="headerlink" title="注册和安装七牛云"></a>注册和安装七牛云</h1><p>首先我们需要登陆 七牛云官网 申请七牛账号，按照流程注册即可。之后再添加资源中，选择对象存储，新建存储空间，按照官网说明创建空间即可，创建完以后，系统会自动分配给你一个测试域名，比如我的就是：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">oupmfz5u5.bkt.clouddn.com</span><br></pre></td></tr></table></figure></p>
-<p>之后，你就可以通过这个URL来访问你上传资源了。当然你也可以设置自定义域名。</p>
-<h1 id="安装Hexo七牛云插件"><a href="#安装Hexo七牛云插件" class="headerlink" title="安装Hexo七牛云插件"></a>安装Hexo七牛云插件</h1><p>插件地址：</p>
-<p><a href="https://github.com/gyk001/hexo-qiniu-sync" target="_blank" rel="noopener">https://github.com/gyk001/hexo-qiniu-sync</a></p>
-<p>安装步骤：</p>
-<p>具体安装步骤可以参考官方的 <a href="https://github.com/gyk001/hexo-qiniu-sync/blob/master/README.md" target="_blank" rel="noopener">README文档</a> 。</p>
-<h3 id="参考安装步骤如下："><a href="#参考安装步骤如下：" class="headerlink" title="参考安装步骤如下："></a>参考安装步骤如下：</h3><ul>
-<li><p>在你的hexo主目录下，运行以下指令：</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">npm install hexo-qiniu-sync --save</span><br></pre></td></tr></table></figure>
-</li>
-<li><p>添加插件配置信息到 _config.yml 文件中：</p>
-</li>
-</ul>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br></pre></td><td class="code"><pre><span class="line">qiniu:</span><br><span class="line">  offline: false</span><br><span class="line">  sync: true</span><br><span class="line">  bucket: litianzeng</span><br><span class="line">  #secret_file: sec/qn.json or C:</span><br><span class="line">  access_key: CCrdrnUftW9Q7aI9nTzVckhIe7tWUdm8zVXTJLKF</span><br><span class="line">  secret_key: xUOAgX9fZXKMz4wbpOKIcCyD3haClJUOXrZbveQw</span><br><span class="line">  dirPrefix: static</span><br><span class="line">  urlPrefix: http://img.litianzeng.cn/static</span><br><span class="line">  up_host: http://upload.qiniu.com</span><br><span class="line">  local_dir: static</span><br><span class="line">  update_exist: true</span><br><span class="line">  image: </span><br><span class="line">    folder: images</span><br><span class="line">    extend: </span><br><span class="line">  js:</span><br><span class="line">    folder: js</span><br><span class="line">  css:</span><br><span class="line">    folder: css</span><br></pre></td></tr></table></figure>
-<ul>
-<li><p>安装插件、配置完成后可以先执行 hexo 的任何命令，比如 hexo g，插件会自动生成配置中的路径，比如我的 static ，完整路径即在 hexo 文件夹的根目录下会生成 static/js ,static/images ,static/css 几个目录，把图片文件拷贝到 images 目录下面，即可以配置为图片文件名，比如 beiying.jpg 。</p>
-</li>
-<li><p>图片的使用</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">&#123;% qnimg imageFile attr1:value1 attr2:value2 &apos;attr3:value31 value32 value3n&apos; [extend:?imageView2/2/w/600 | normal:yes] %&#125;</span><br></pre></td></tr></table></figure>
-</li>
-</ul>
-<p>如果你在 _config.yml 文件中配置了 extend 字段，则默认会对插入的图片进行对应的处理。<br>如果不想对一个图片进行处理，则可在 jnimg 标签内增加 normal:yes 参数，则使用原图，不进行图片处理。<br>基本图片处理（imageView2）、高级图片处理（imageMogr2）、图片水印处理（watermark） 这三个图片处理接口，多个接口内容之间用 | 间隔。</p>
-<h3 id="Demo"><a href="#Demo" class="headerlink" title="Demo"></a>Demo</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">&#123;% qnimg test/demo.png title:图片标题 alt:图片说明 &apos;class:class1 class2&apos; extend:?imageView2/2/w/600 %&#125;</span><br></pre></td></tr></table></figure>
-<p>将会被渲染成：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">&lt;img title=&quot;图片标题&quot; alt=&quot;图片说明&quot; class=&quot;class1 class2&quot; src=&quot;http://gyk001.u.qiniudn.com/images/test/demo.png?imageView2/2/w/600&quot;&gt;</span><br></pre></td></tr></table></figure></p>
-<h1 id="操作示例"><a href="#操作示例" class="headerlink" title="操作示例"></a>操作示例</h1><p>如果刚才配置完成 _config.yml 文件后，系统没有自动为你生成 local_dir 文件夹，那么你需要想执行一下：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">hexo qiniu sync</span><br></pre></td></tr></table></figure></p>
-<p>这样就在 localDir 下生成相对应的文件夹,将图片资源放到 images 文件夹下，比如我的路径是 static/images/test.jpg，然后就使用我上面写到的标签：</p>
-<img src="http://img.litianzeng.cn/static/images/test.jpg">
-<p>最后同步上传图片：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">hexo qiniu sync2</span><br></pre></td></tr></table></figure></p>
-<p>然后 hexo g -d 将本地网页更新到服务器就OK了。</p>
-<img src="http://img.litianzeng.cn/static/images/beiying.jpg">
-          
+          为什么要使用图床？Hexo文章中的图片，我们可以放到本地，然后一起部署到github中，这样完全没有问题。然而github pages空间毕竟有限（貌似只有300M）,另外图片的管理太混乱了，一些原创的图片可能被盗链
+注册和安装七牛云首先我们需要登陆 七牛云官网 申请七牛账号，按照流程注册即可。之后
+          ...
+          <!--noindex-->
+          <div class="post-button text-center">
+            <a class="btn" href="/2018/10/23/Hexo七牛云图床使用/#more" rel="contents">
+              阅读全文 &raquo;
+            </a>
+          </div>
+          <!--/noindex-->
         
       
     </div>
@@ -574,18 +552,15 @@
       
         
           
-            <h1 id="23端口"><a href="#23端口" class="headerlink" title="23端口"></a>23端口</h1><p><strong>端口说明</strong>：23端口主要用于Telnet(远程登录)服务，是Internet上普遍采用的登录和仿真程序。同样需要设置客户端和服务器端，开启Telnet服务的客户端就可以登录远程Telnet服务器，采用授权用户名和密码登录。登录之后，允许用户使用命令提示符窗口进行相应的操作。在Windows中可以在命令提示符窗口中，键入“Telnet”命令来使用Telnet远程登录。</p>
-<p><strong>操作建议</strong>：利用Telnet服务，黑客可以搜索远程登录Unix的服务，扫描操作系统的类型。而且在Windows 2000中Telnet服务存在多个严重的漏洞，比如提升权限、拒绝服务等，可以让远程服务器崩溃。Telnet服务的23端口也是TTS(Tiny Telnet Server)木马的缺省端口。所以，建议关闭23端口。</p>
-<h1 id="135端口"><a href="#135端口" class="headerlink" title="135端口"></a>135端口</h1><p><strong>端口说明</strong>：135端口主要用于使用RPC(Remote Procedure Call，远程过程调用)协议并提供DCOM(分布式组件对象模型)服务，通过RPC可以保证在一台计算机上运行的程序可以顺利地执行远程计算机上的代码;使用DCOM可以通过网络直接进行通信，能够跨包括HTTP协议在内的多种网络传输。</p>
-<p><strong>端口漏洞</strong>：相信去年很多Windows 2000和Windows XP用户都中了“冲击波”病毒，该病毒就是利用RPC漏洞来攻击计算机的。RPC本身在处理通过TCP/IP的消息交换部分有一个漏洞，该漏洞是由于错误地处理格式不正确的消息造成的。该漏洞会影响到RPC与DCOM之间的一个接口，该接口侦听的端口就是135。</p>
-<p><strong>操作建议</strong>：为了避免“冲击波”病毒的攻击，建议关闭该端口。</p>
-<h1 id="445端口"><a href="#445端口" class="headerlink" title="445端口"></a>445端口</h1><p><strong>端口说明</strong>445端口是一个毁誉参半的端口，有了它我们可以在局域网中轻松访问各种共享文件夹或共享打印机，但也正是因为有了它，黑客们才有了可乘之机，他们能通过该端口偷偷共享你的硬盘，甚至会在悄无声息中将你的硬盘格式化掉!</p>
-<h1 id="批处理脚本"><a href="#批处理脚本" class="headerlink" title="批处理脚本"></a>批处理脚本</h1><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br></pre></td><td class="code"><pre><span class="line">@echo off </span><br><span class="line">color E2</span><br><span class="line">title 关闭常见的危险端口</span><br><span class="line">echo 正在开启Windows防火墙</span><br><span class="line">echo.</span><br><span class="line">netsh advfirewall set currentprofile state on &gt; nul</span><br><span class="line">netsh advfirewall set publicprofile state on &gt; nul</span><br><span class="line">netsh advfirewall set allprofile state on &gt; nul</span><br><span class="line">netsh advfirewall set privateprofile state on &gt; nul</span><br><span class="line">echo. </span><br><span class="line">echo 防火墙已经成功启动。</span><br><span class="line">echo. </span><br><span class="line">echo. </span><br><span class="line">pause </span><br><span class="line">cls </span><br><span class="line">echo 正在关闭常见的危险端口，请稍候… </span><br><span class="line">echo. </span><br><span class="line">echo 正在关闭135,445端口… </span><br><span class="line">netsh advfirewall firewall add rule name=denyDangerTCPPort dir=in protocol=TCP localport=135,445 action=block</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">echo 常见的危险端口已经关闭。 </span><br><span class="line">echo. </span><br><span class="line">echo. </span><br><span class="line">echo. </span><br><span class="line">echo. </span><br><span class="line">echo.</span><br><span class="line">echo. </span><br><span class="line">echo 按任意键退出。 </span><br><span class="line">pause&gt;nul</span><br></pre></td></tr></table></figure>
-<p>显示名字为“denyDangerTCPPort”的动态入站规则<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">netsh advfirewall firewall show rule name=&quot;denyDangerTCPPort&quot;</span><br></pre></td></tr></table></figure></p>
-<p>删除名字为“denyDangerTCPPort”的动态入站规则<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">netsh advfirewall firewall delete rule name=&quot;denyDangerTCPPort&quot;</span><br><span class="line">`</span><br></pre></td></tr></table></figure></p>
-<p>参考：<br><a href="https://www.cnblogs.com/mobilecard/p/9286364.html" target="_blank" rel="noopener">bat批处理和netsh</a><br><a href="https://mp.weixin.qq.com/s?src=11&amp;timestamp=1539935379&amp;ver=1191&amp;signature=Dpp63toSAFvDP*sYB1QIs4GG1rxORLS*g2jjyc*PbW9QYyojhcOk1MEa7wqYIkuQtV6k*OmeDLxASga1PZ6A8FfQ6VMztfP5w-bUrxhD6cOlmILaHFfW4MUm-eWN3v-y&amp;new=1" target="_blank" rel="noopener">dos语法</a><br><a href="https://www.jb51.net/article/8844.htm" target="_blank" rel="noopener">DOS命令全集</a></p>
-
-          
+          23端口端口说明：23端口主要用于Telnet(远程登录)服务，是Internet上普遍采用的登录和仿真程序。同样需要设置客户端和服务器端，开启Telnet服务的客户端就可以登录远程Telnet服务器，采用授权用户名和密码登录。登录之后，允许用户使用命令提示符窗口进行相应的操作。在Windows中可
+          ...
+          <!--noindex-->
+          <div class="post-button text-center">
+            <a class="btn" href="/2018/10/19/windows服务器关闭23，135，335端口/#more" rel="contents">
+              阅读全文 &raquo;
+            </a>
+          </div>
+          <!--/noindex-->
         
       
     </div>
@@ -726,29 +701,25 @@
       
         
           
-            <h1 id="1-ansible-tower的安装"><a href="#1-ansible-tower的安装" class="headerlink" title="1. ansible-tower的安装"></a>1. ansible-tower的安装</h1><blockquote>
-<p>安装环境要求:</p>
-<ul>
-<li>最少2个CPU</li>
-<li>最低4 GB RAM</li>
-<li>服务节点的20 GB专用硬盘空间</li>
-<li>需要64位支持</li>
-<li>目前支持的Mozilla Firefox或Google Chrome版本</li>
-</ul>
-</blockquote>
-<h3 id="1-1-配置EPEL存储库以及所需的任何其他存储库"><a href="#1-1-配置EPEL存储库以及所需的任何其他存储库" class="headerlink" title="1.1 配置EPEL存储库以及所需的任何其他存储库"></a>1.1 配置EPEL存储库以及所需的任何其他存储库</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">yum install http://dl.fedoraproject.org/pub/epel/epel-release-latest-7.noarch.rpm</span><br></pre></td></tr></table></figure>
-<h3 id="1-2-Tower使用Ansible-playbooks安装-因此，Ansible需要完成塔的安装"><a href="#1-2-Tower使用Ansible-playbooks安装-因此，Ansible需要完成塔的安装" class="headerlink" title="1.2 Tower使用Ansible playbooks安装; 因此，Ansible需要完成塔的安装"></a>1.2 Tower使用Ansible playbooks安装; 因此，Ansible需要完成塔的安装</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">yum install ansible</span><br></pre></td></tr></table></figure>
-<h3 id="1-3-版本选择"><a href="#1-3-版本选择" class="headerlink" title="1.3 版本选择"></a>1.3 版本选择</h3><p>下载地址：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">https://releases.ansible.com/ansible-tower/setup/</span><br></pre></td></tr></table></figure></p>
-<h3 id="1-4-安装"><a href="#1-4-安装" class="headerlink" title="1.4 安装"></a>1.4 安装</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">tar xvzf ansible-tower-setup-latest.tar.gz</span><br><span class="line">cd ansible-tower-setup- &lt;tower_version&gt;</span><br></pre></td></tr></table></figure>
-<p>单实例配置tower<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br></pre></td><td class="code"><pre><span class="line">[tower]</span><br><span class="line">localhost ansible_connection=local</span><br><span class="line"></span><br><span class="line">[database]</span><br><span class="line"></span><br><span class="line">[all:vars]</span><br><span class="line">admin_password=&apos;123456&apos;</span><br><span class="line"></span><br><span class="line">pg_host=&apos;&apos;</span><br><span class="line">pg_port=&apos;&apos;</span><br><span class="line"></span><br><span class="line">pg_database=&apos;awx&apos;</span><br><span class="line">pg_username=&apos;awx&apos;</span><br><span class="line">pg_password=&apos;awk&apos;</span><br><span class="line"></span><br><span class="line">rabbitmq_username=tower</span><br><span class="line">rabbitmq_password=&apos;tower&apos;</span><br><span class="line">rabbitmq_cookie=cookiemonster</span><br></pre></td></tr></table></figure></p>
-<p>配置admin的密码，pg的密码，rabbitmq的密码。<br>pg和rabbitmq 如果本机没有安装的话，默认会进行安装。</p>
-<p>执行安装<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">./setup.sh</span><br></pre></td></tr></table></figure></p>
-<h1 id="2-Ansible-Tower-3-3-x-企业版无限hosts"><a href="#2-Ansible-Tower-3-3-x-企业版无限hosts" class="headerlink" title="2. Ansible Tower 3.3.x 企业版无限hosts"></a>2. Ansible Tower 3.3.x 企业版无限hosts</h1><h3 id="无需申请试用授权文件"><a href="#无需申请试用授权文件" class="headerlink" title="无需申请试用授权文件"></a>无需申请试用授权文件</h3><p>修改license验证<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">cd /var/lib/awx/venv/awx/lib/python2.7/site-packages/tower_license</span><br><span class="line">vi __init__.py</span><br><span class="line"></span><br><span class="line">新增120行， return True</span><br><span class="line">119     def _check_cloudforms_subscription(self):</span><br><span class="line">120         return True</span><br></pre></td></tr></table></figure></p>
-<h3 id="编译"><a href="#编译" class="headerlink" title="编译"></a>编译</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">python -m py_compile __init__.py</span><br><span class="line">python -O -m py_compile __init__.py</span><br></pre></td></tr></table></figure>
-<h3 id="重启服务"><a href="#重启服务" class="headerlink" title="重启服务"></a>重启服务</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">ansible-tower-service restart</span><br></pre></td></tr></table></figure>
-<h3 id="验证"><a href="#验证" class="headerlink" title="验证"></a>验证</h3><p>打开–settings– LICENSE 查看<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br></pre></td><td class="code"><pre><span class="line">DETAILS</span><br><span class="line">LICENSE</span><br><span class="line">Valid License</span><br><span class="line">VERSION</span><br><span class="line">3.3.0</span><br><span class="line">LICENSE TYPE</span><br><span class="line">Enterprise</span><br><span class="line">SUBSCRIPTION</span><br><span class="line">Red Hat CloudForms License</span><br><span class="line">LICENSE KEY</span><br><span class="line">xxxx</span><br><span class="line">EXPIRES ON</span><br><span class="line">9999/01/01</span><br><span class="line">TIME REMAINING</span><br><span class="line">2914709 Days</span><br><span class="line">HOSTS AVAILABLE</span><br><span class="line">9999999</span><br><span class="line">HOSTS USED</span><br><span class="line">1</span><br><span class="line">HOSTS REMAINING</span><br><span class="line">9999998</span><br><span class="line">If you are ready to upgrade, please contact us by clicking the button below</span><br></pre></td></tr></table></figure></p>
+          1. ansible-tower的安装
+安装环境要求:
 
-          
+最少2个CPU
+最低4 GB RAM
+服务节点的20 GB专用硬盘空间
+需要64位支持
+目前支持的Mozilla Firefox或Google Chrome版本
+
+
+1.1 配置EPEL存储库以及所需的任何其他存储库1yum install 
+          ...
+          <!--noindex-->
+          <div class="post-button text-center">
+            <a class="btn" href="/2018/10/18/ansible-tower/#more" rel="contents">
+              阅读全文 &raquo;
+            </a>
+          </div>
+          <!--/noindex-->
         
       
     </div>
@@ -867,9 +838,16 @@
       
         
           
-            <p>test</p>
+          test
 
           
+          <!--noindex-->
+          <div class="post-button text-center">
+            <a class="btn" href="/2018/10/18/git笔记/#more" rel="contents">
+              阅读全文 &raquo;
+            </a>
+          </div>
+          <!--/noindex-->
         
       
     </div>
@@ -1163,72 +1141,22 @@
       
         
           
-            <blockquote>
-<p>vscode 支持一边编辑一边预览，有2种方法：</p>
-<ol>
-<li>CTRL + shift + P 调出命令框，输入&gt;markdown 找到<strong>markdown：open 》preview</strong>的选项选中</li>
-<li>先按ctrl + k ,然后放掉，接着按 V ，调出实时预览框</li>
-</ol>
-</blockquote>
-<h1 id="markdown-语法"><a href="#markdown-语法" class="headerlink" title="markdown 语法"></a>markdown 语法</h1><h3 id="1-标题"><a href="#1-标题" class="headerlink" title="1. 标题"></a>1. 标题</h3><p>行首加上#号+空格 即可定义标题，#号的个数代表标题的级数，一共6级。</p>
-<h3 id="2-列表"><a href="#2-列表" class="headerlink" title="2. 列表"></a>2. 列表</h3><ul>
-<li><h3 id="无序列表"><a href="#无序列表" class="headerlink" title="无序列表"></a>无序列表</h3><ul>
-<li>可用星号（*），加号（+），减号（—）作为标记，后面跟空格。3者可混用。</li>
-</ul>
-</li>
-</ul>
-<ul>
-<li><h3 id="有序列表"><a href="#有序列表" class="headerlink" title="有序列表"></a>有序列表</h3><ul>
-<li><p>数字加上句号（1. ），数字不影响显示效果</p>
-<blockquote>
-<ol>
-<li>11</li>
-<li>222</li>
-<li>22222</li>
-</ol>
-</blockquote>
-</li>
-</ul>
-</li>
-<li><h3 id="列表的缩进和混排"><a href="#列表的缩进和混排" class="headerlink" title="列表的缩进和混排"></a>列表的缩进和混排</h3><ul>
-<li>若需缩进，在*，+，—前面加 空格</li>
-</ul>
-</li>
-<li><h3 id="记事列表"><a href="#记事列表" class="headerlink" title="记事列表"></a>记事列表</h3><ul>
-<li>使用 - [x] 开头的表示已完成的记事</li>
-<li>使用 - [ ] 开头的表示待办记事<ul>
-<li style="list-style: none"><input type="checkbox" checked> 完成记事</li>
-<li style="list-style: none"><input type="checkbox"> 待办记事</li>
-</ul>
-</li>
-</ul>
-</li>
-</ul>
-<h3 id="3-嵌套块的引用"><a href="#3-嵌套块的引用" class="headerlink" title="3. 嵌套块的引用"></a>3. 嵌套块的引用</h3><pre><code>&gt; 使用“&gt;”可以表示嵌套的引用
-</code></pre><h3 id="4-文字效果和分割线"><a href="#4-文字效果和分割线" class="headerlink" title="4. 文字效果和分割线"></a>4. 文字效果和分割线</h3><p><em>斜体</em><br><strong>粗体</strong><br>++下划线++<br><del>删除线</del><br>==文本高亮==</p>
-<hr>
-<hr>
-<blockquote>
-<blockquote>
-<p>一行中用三个以上的星号 (*)、减号 (-) 或是下划线 (_) 来建立一个分隔线，需要独占一行，中间可以有空格，但行内不能包含其他字符</p>
-</blockquote>
-</blockquote>
-<h3 id="5-链接"><a href="#5-链接" class="headerlink" title="5. 链接"></a>5. 链接</h3><ul>
-<li><p>文本连接<br>格式：[文本] (链接地址 “可选说明文字，鼠标放上提示的文字”)</p>
-<blockquote>
-<p><a href="www.baidu.com" title="搜索">baidu</a></p>
-</blockquote>
-</li>
-<li><p>图片链接<br>格式：！[文本] (链接地址 “可选说明文字，鼠标放上提示的文字”)</p>
-</li>
-</ul>
-<h3 id="6-文字高亮和代码块"><a href="#6-文字高亮和代码块" class="headerlink" title="6. 文字高亮和代码块"></a>6. 文字高亮和代码块</h3><ul>
-<li>需要高亮的文本，使用 <code>号包括，例如</code>高亮`</li>
-<li>引用代码块使用两组 <figure class="highlight plain"><figcaption><span>包围这段代码</span></figcaption><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">```</span><br><span class="line">hello world!!</span><br></pre></td></tr></table></figure></li>
-</ul>
-<p>参考：<br><a href="https://www.jianshu.com/p/db1d26af109d" target="_blank" rel="noopener">https://www.jianshu.com/p/db1d26af109d</a></p>
-
           
+vscode 支持一边编辑一边预览，有2种方法：
+
+CTRL + shift + P 调出命令框，输入&gt;markdown 找到markdown：open 》preview的选项选中
+先按ctrl + k ,然后放掉，接着按 V ，调出实时预览框
+
+
+markdown 语法1. 标题行首加上#
+          ...
+          <!--noindex-->
+          <div class="post-button text-center">
+            <a class="btn" href="/2018/10/17/markdown语法/#more" rel="contents">
+              阅读全文 &raquo;
+            </a>
+          </div>
+          <!--/noindex-->
         
       
     </div>
@@ -1347,17 +1275,15 @@
       
         
           
-            <p>Welcome to <a href="https://hexo.io/" target="_blank" rel="noopener">Hexo</a>! This is your very first post. Check <a href="https://hexo.io/docs/" target="_blank" rel="noopener">documentation</a> for more info. If you get any problems when using Hexo, you can find the answer in <a href="https://hexo.io/docs/troubleshooting.html" target="_blank" rel="noopener">troubleshooting</a> or you can ask me on <a href="https://github.com/hexojs/hexo/issues" target="_blank" rel="noopener">GitHub</a>.</p>
-<h2 id="Quick-Start"><a href="#Quick-Start" class="headerlink" title="Quick Start"></a>Quick Start</h2><h3 id="Create-a-new-post"><a href="#Create-a-new-post" class="headerlink" title="Create a new post"></a>Create a new post</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ hexo new <span class="string">"My New Post"</span></span><br></pre></td></tr></table></figure>
-<p>More info: <a href="https://hexo.io/docs/writing.html" target="_blank" rel="noopener">Writing</a></p>
-<h3 id="Run-server"><a href="#Run-server" class="headerlink" title="Run server"></a>Run server</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ hexo server</span><br></pre></td></tr></table></figure>
-<p>More info: <a href="https://hexo.io/docs/server.html" target="_blank" rel="noopener">Server</a></p>
-<h3 id="Generate-static-files"><a href="#Generate-static-files" class="headerlink" title="Generate static files"></a>Generate static files</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ hexo generate</span><br></pre></td></tr></table></figure>
-<p>More info: <a href="https://hexo.io/docs/generating.html" target="_blank" rel="noopener">Generating</a></p>
-<h3 id="Deploy-to-remote-sites"><a href="#Deploy-to-remote-sites" class="headerlink" title="Deploy to remote sites"></a>Deploy to remote sites</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ hexo deploy</span><br></pre></td></tr></table></figure>
-<p>More info: <a href="https://hexo.io/docs/deployment.html" target="_blank" rel="noopener">Deployment</a></p>
-
-          
+          Welcome to Hexo! This is your very first post. Check documentation for more info. If you get any problems when using Hexo, you can find the answer in 
+          ...
+          <!--noindex-->
+          <div class="post-button text-center">
+            <a class="btn" href="/2018/10/09/hello-world/#more" rel="contents">
+              阅读全文 &raquo;
+            </a>
+          </div>
+          <!--/noindex-->
         
       
     </div>

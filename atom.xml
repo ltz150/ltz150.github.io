@@ -6,7 +6,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="https://www.litianzeng.cn/"/>
-  <updated>2018-10-23T07:05:34.532Z</updated>
+  <updated>2018-10-23T08:05:35.755Z</updated>
   <id>https://www.litianzeng.cn/</id>
   
   <author>
@@ -21,12 +21,23 @@
     <link href="https://www.litianzeng.cn/2018/10/23/Hexo%E4%B8%83%E7%89%9B%E4%BA%91%E5%9B%BE%E5%BA%8A%E4%BD%BF%E7%94%A8/"/>
     <id>https://www.litianzeng.cn/2018/10/23/Hexo七牛云图床使用/</id>
     <published>2018-10-23T07:05:34.000Z</published>
-    <updated>2018-10-23T07:05:34.532Z</updated>
+    <updated>2018-10-23T08:05:35.755Z</updated>
+    
+    <content type="html"><![CDATA[<h1 id="为什么要使用图床？"><a href="#为什么要使用图床？" class="headerlink" title="为什么要使用图床？"></a>为什么要使用图床？</h1><p>Hexo文章中的图片，我们可以放到本地，然后一起部署到github中，这样完全没有问题。然而github pages空间毕竟有限（貌似只有300M）,另外图片的管理太混乱了，一些原创的图片可能被盗链</p><h1 id="注册和安装七牛云"><a href="#注册和安装七牛云" class="headerlink" title="注册和安装七牛云"></a>注册和安装七牛云</h1><p>首先我们需要登陆 七牛云官网 申请七牛账号，按照流程注册即可。之后再添加资源中，选择对象存储，新建存储空间，按照官网说明创建空间即可，创建完以后，系统会自动分配给你一个测试域名，比如我的就是：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">oupmfz5u5.bkt.clouddn.com</span><br></pre></td></tr></table></figure></p><p>之后，你就可以通过这个URL来访问你上传资源了。当然你也可以设置自定义域名。</p><h1 id="安装Hexo七牛云插件"><a href="#安装Hexo七牛云插件" class="headerlink" title="安装Hexo七牛云插件"></a>安装Hexo七牛云插件</h1><p>插件地址：</p><p><a href="https://github.com/gyk001/hexo-qiniu-sync" target="_blank" rel="noopener">https://github.com/gyk001/hexo-qiniu-sync</a></p><p>安装步骤：</p><p>具体安装步骤可以参考官方的 <a href="https://github.com/gyk001/hexo-qiniu-sync/blob/master/README.md" target="_blank" rel="noopener">README文档</a> 。</p><h3 id="参考安装步骤如下："><a href="#参考安装步骤如下：" class="headerlink" title="参考安装步骤如下："></a>参考安装步骤如下：</h3><ul><li><p>在你的hexo主目录下，运行以下指令：</p><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">npm install hexo-qiniu-sync --save</span><br></pre></td></tr></table></figure></li><li><p>添加插件配置信息到 _config.yml 文件中：</p></li></ul><img title="七牛云" alt="七牛云" src="http://img.litianzeng.cn/static/images/qiniu-logo.png?imageView2/2/w/550">]]></content>
     
     <summary type="html">
     
+      
+      
+        &lt;h1 id=&quot;为什么要使用图床？&quot;&gt;&lt;a href=&quot;#为什么要使用图床？&quot; class=&quot;headerlink&quot; title=&quot;为什么要使用图床？&quot;&gt;&lt;/a&gt;为什么要使用图床？&lt;/h1&gt;&lt;p&gt;Hexo文章中的图片，我们可以放到本地，然后一起部署到github中，这样完全没有问
+      
+    
     </summary>
     
+      <category term="技巧" scheme="https://www.litianzeng.cn/categories/%E6%8A%80%E5%B7%A7/"/>
+    
+    
+      <category term="hexo" scheme="https://www.litianzeng.cn/tags/hexo/"/>
     
   </entry>
   
@@ -126,9 +137,9 @@
       <category term="技巧" scheme="https://www.litianzeng.cn/categories/%E6%8A%80%E5%B7%A7/"/>
     
     
-      <category term="next" scheme="https://www.litianzeng.cn/tags/next/"/>
-    
       <category term="hexo" scheme="https://www.litianzeng.cn/tags/hexo/"/>
+    
+      <category term="next" scheme="https://www.litianzeng.cn/tags/next/"/>
     
   </entry>
   

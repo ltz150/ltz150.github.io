@@ -90,13 +90,13 @@
 
 
 <meta property="og:type" content="website">
-<meta property="og:title" content="about">
-<meta property="og:url" content="https://www.litianzeng.cn/about/index.html">
+<meta property="og:title" content="categories">
+<meta property="og:url" content="https://www.litianzeng.cn/categories/index.html">
 <meta property="og:site_name" content="Hexo">
 <meta property="og:locale" content="zh-Hans">
-<meta property="og:updated_time" content="2018-10-17T15:03:04.514Z">
+<meta property="og:updated_time" content="2018-10-16T17:42:01.563Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="about">
+<meta name="twitter:title" content="categories">
 
 
 
@@ -128,7 +128,7 @@
 
 
 
-  <link rel="canonical" href="https://www.litianzeng.cn/about/"/>
+  <link rel="canonical" href="https://www.litianzeng.cn/categories/"/>
 
 
 
@@ -346,6 +346,28 @@
           </span>
 
           
+            <span class="post-category" >
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">分类于</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/技巧/" itemprop="url" rel="index">
+                    <span itemprop="name">技巧</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
+          
 
           
             
@@ -378,7 +400,21 @@
       
 
       
-        
+        <h1 id="为什么要使用图床？"><a href="#为什么要使用图床？" class="headerlink" title="为什么要使用图床？"></a>为什么要使用图床？</h1><p>Hexo文章中的图片，我们可以放到本地，然后一起部署到github中，这样完全没有问题。然而github pages空间毕竟有限（貌似只有300M）,另外图片的管理太混乱了，一些原创的图片可能被盗链</p>
+<h1 id="注册和安装七牛云"><a href="#注册和安装七牛云" class="headerlink" title="注册和安装七牛云"></a>注册和安装七牛云</h1><p>首先我们需要登陆 七牛云官网 申请七牛账号，按照流程注册即可。之后再添加资源中，选择对象存储，新建存储空间，按照官网说明创建空间即可，创建完以后，系统会自动分配给你一个测试域名，比如我的就是：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">oupmfz5u5.bkt.clouddn.com</span><br></pre></td></tr></table></figure></p>
+<p>之后，你就可以通过这个URL来访问你上传资源了。当然你也可以设置自定义域名。</p>
+<h1 id="安装Hexo七牛云插件"><a href="#安装Hexo七牛云插件" class="headerlink" title="安装Hexo七牛云插件"></a>安装Hexo七牛云插件</h1><p>插件地址：</p>
+<p><a href="https://github.com/gyk001/hexo-qiniu-sync" target="_blank" rel="noopener">https://github.com/gyk001/hexo-qiniu-sync</a></p>
+<p>安装步骤：</p>
+<p>具体安装步骤可以参考官方的 <a href="https://github.com/gyk001/hexo-qiniu-sync/blob/master/README.md" target="_blank" rel="noopener">README文档</a> 。</p>
+<h3 id="参考安装步骤如下："><a href="#参考安装步骤如下：" class="headerlink" title="参考安装步骤如下："></a>参考安装步骤如下：</h3><ul>
+<li><p>在你的hexo主目录下，运行以下指令：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">npm install hexo-qiniu-sync --save</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>添加插件配置信息到 _config.yml 文件中：</p>
+</li>
+</ul>
+<img title="七牛云" alt="七牛云" src="http://img.litianzeng.cn/static/images/qiniu-logo.png?imageView2/2/w/550">
       
     </div>
     
@@ -392,6 +428,12 @@
     
 
     <footer class="post-footer">
+      
+        <div class="post-tags">
+          
+            <a href="/tags/hexo/" rel="tag"><i class="fa fa-tag"></i> hexo</a>
+          
+        </div>
       
 
       
@@ -462,8 +504,17 @@
       
 
       
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap">
+            文章目录
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview-wrap">
+            站点概览
+          </li>
+        </ul>
+      
 
-      <section class="site-overview-wrap sidebar-panel sidebar-panel-active">
+      <section class="site-overview-wrap sidebar-panel">
         <div class="site-overview">
           <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
             
@@ -530,6 +581,22 @@
         </div>
       </section>
 
+      
+      <!--noindex-->
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+
+            
+              
+            
+
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#为什么要使用图床？"><span class="nav-number">1.</span> <span class="nav-text">为什么要使用图床？</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#注册和安装七牛云"><span class="nav-number">2.</span> <span class="nav-text">注册和安装七牛云</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#安装Hexo七牛云插件"><span class="nav-number">3.</span> <span class="nav-text">安装Hexo七牛云插件</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#参考安装步骤如下："><span class="nav-number">3.0.1.</span> <span class="nav-text">参考安装步骤如下：</span></a></li></ol></li></ol></li></ol></div>
+            
+
+          </div>
+        </section>
+      <!--/noindex-->
       
 
       

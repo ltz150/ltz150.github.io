@@ -3,7 +3,13 @@
   <entry>
     <title><![CDATA[Hexo七牛云图床使用]]></title>
     <url>%2F2018%2F10%2F23%2FHexo%E4%B8%83%E7%89%9B%E4%BA%91%E5%9B%BE%E5%BA%8A%E4%BD%BF%E7%94%A8%2F</url>
-    <content type="text"></content>
+    <content type="text"><![CDATA[为什么要使用图床？Hexo文章中的图片，我们可以放到本地，然后一起部署到github中，这样完全没有问题。然而github pages空间毕竟有限（貌似只有300M）,另外图片的管理太混乱了，一些原创的图片可能被盗链 注册和安装七牛云首先我们需要登陆 七牛云官网 申请七牛账号，按照流程注册即可。之后再添加资源中，选择对象存储，新建存储空间，按照官网说明创建空间即可，创建完以后，系统会自动分配给你一个测试域名，比如我的就是：1oupmfz5u5.bkt.clouddn.com 之后，你就可以通过这个URL来访问你上传资源了。当然你也可以设置自定义域名。 安装Hexo七牛云插件插件地址： https://github.com/gyk001/hexo-qiniu-sync 安装步骤： 具体安装步骤可以参考官方的 README文档 。 参考安装步骤如下： 在你的hexo主目录下，运行以下指令： 1npm install hexo-qiniu-sync --save 添加插件配置信息到 _config.yml 文件中：]]></content>
+      <categories>
+        <category>技巧</category>
+      </categories>
+      <tags>
+        <tag>hexo</tag>
+      </tags>
   </entry>
   <entry>
     <title><![CDATA[windows服务器关闭23，135，335端口]]></title>
@@ -40,8 +46,8 @@
         <category>技巧</category>
       </categories>
       <tags>
-        <tag>next</tag>
         <tag>hexo</tag>
+        <tag>next</tag>
       </tags>
   </entry>
   <entry>
